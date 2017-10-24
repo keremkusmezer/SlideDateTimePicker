@@ -45,8 +45,6 @@ class SlidingTabStrip extends LinearLayout {
     private final int mSelectedIndicatorThickness;
     private final Paint mSelectedIndicatorPaint;
 
-    private final int mDefaultBottomBorderColor;
-
     private final Paint mDividerPaint;
     private final float mDividerHeight;
 
@@ -60,7 +58,8 @@ class SlidingTabStrip extends LinearLayout {
         this(context, null);
     }
 
-    SlidingTabStrip(Context context, AttributeSet attrs) {
+    @SuppressWarnings("WeakerAccess")
+    SlidingTabStrip(Context context, @SuppressWarnings("SameParameterValue") AttributeSet attrs) {
         super(context, attrs);
         setWillNotDraw(false);
 
@@ -68,9 +67,9 @@ class SlidingTabStrip extends LinearLayout {
 
         TypedValue outValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.colorForeground, outValue, true);
-        final int themeForegroundColor =  outValue.data;
+        final int themeForegroundColor = outValue.data;
 
-        mDefaultBottomBorderColor = setColorAlpha(themeForegroundColor,
+        int mDefaultBottomBorderColor = setColorAlpha(themeForegroundColor,
                 DEFAULT_BOTTOM_BORDER_COLOR_ALPHA);
 
         mDefaultTabColorizer = new SimpleTabColorizer();

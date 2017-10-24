@@ -16,12 +16,13 @@ import android.support.v4.app.FragmentTransaction;
  * @author jjobes
  *
  */
+@SuppressWarnings({"JavaDoc", "WeakerAccess"})
 public class SlideDateTimePicker
 {
     public static final int HOLO_DARK = 1;
     public static final int HOLO_LIGHT = 2;
 
-    private FragmentManager mFragmentManager;
+    private final FragmentManager mFragmentManager;
     private SlideDateTimeListener mListener;
     private Date mInitialDate;
     private Date mMinDate;
@@ -155,7 +156,6 @@ public class SlideDateTimePicker
 
     /**
      * Shows the dialog to the user. Make sure to call
-     * {@link #setListener()} before calling this.
      */
     public void show()
     {
@@ -189,10 +189,11 @@ public class SlideDateTimePicker
      * The following implements the builder API to simplify
      * creation and display of the dialog.
      */
+    @SuppressWarnings("JavaDoc")
     public static class Builder
     {
         // Required
-        private FragmentManager fm;
+        private final FragmentManager fm;
         private SlideDateTimeListener listener;
 
         // Optional

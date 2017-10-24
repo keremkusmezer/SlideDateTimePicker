@@ -1,7 +1,5 @@
 package com.github.jjobes.slidedatetimepicker;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,30 +10,28 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 
+import java.util.Date;
+
 /**
  * The fragment for the first page in the ViewPager that holds
  * the {@link CustomDatePicker}.
  *
  * @author jjobes
- *
  */
-public class DateFragment extends Fragment
-{
+@SuppressWarnings("JavaDoc")
+public class DateFragment extends Fragment {
     /**
      * Used to communicate back to the parent fragment as the user
      * is changing the date spinners so we can dynamically update
      * the tab text.
      */
-    public interface DateChangedListener
-    {
+    public interface DateChangedListener {
         void onDateChanged(int year, int month, int day);
     }
 
     private DateChangedListener mCallback;
-    private CustomDatePicker mDatePicker;
 
-    public DateFragment()
-    {
+    public DateFragment() {
         // Required empty public constructor for fragment.
     }
 
@@ -44,25 +40,20 @@ public class DateFragment extends Fragment
      * to a {@link DateChangedListener}.
      */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try
-        {
+        try {
             mCallback = (DateChangedListener) getParentFragment();
-        }
-        catch (ClassCastException e)
-        {
+        } catch (ClassCastException e) {
             throw new ClassCastException("Calling fragment must implement " +
-                "DateFragment.DateChangedListener interface");
+                    "DateFragment.DateChangedListener interface");
         }
     }
 
     /**
      * Return an instance of DateFragment with its bundle filled with the
      * constructor arguments. The values in the bundle are retrieved in
-     * {@link #onCreateView()} below to properly initialize the DatePicker.
      *
      * @param theme
      * @param year
@@ -72,9 +63,8 @@ public class DateFragment extends Fragment
      * @param maxDate
      * @return an instance of DateFragment
      */
-    public static final DateFragment newInstance(int theme, int year, int month,
-            int day, Date minDate, Date maxDate)
-    {
+    public static DateFragment newInstance(int theme, int year, int month,
+                                           int day, Date minDate, Date maxDate) {
         DateFragment f = new DateFragment();
 
         Bundle b = new Bundle();
@@ -94,8 +84,7 @@ public class DateFragment extends Fragment
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         int theme = getArguments().getInt("theme");
         int initialYear = getArguments().getInt("year");
         int initialMonth = getArguments().getInt("month");
@@ -112,29 +101,28 @@ public class DateFragment extends Fragment
         Context contextThemeWrapper = new ContextThemeWrapper(
                 getActivity(),
                 theme == SlideDateTimePicker.HOLO_DARK ?
-                         android.R.style.Theme_Holo :
-                         android.R.style.Theme_Holo_Light);
+                        android.R.style.Theme_Holo :
+                        android.R.style.Theme_Holo_Light);
 
         LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
 
         View v = localInflater.inflate(R.layout.fragment_date, container, false);
 
-        mDatePicker = (CustomDatePicker) v.findViewById(R.id.datePicker);
+        CustomDatePicker mDatePicker = (CustomDatePicker) v.findViewById(R.id.datePicker);
         // block keyboard popping up on touch
         mDatePicker.setDescendantFocusability(DatePicker.FOCUS_BLOCK_DESCENDANTS);
         mDatePicker.init(
-            initialYear,
-            initialMonth,
-            initialDay,
-            new OnDateChangedListener() {
+                initialYear,
+                initialMonth,
+                initialDay,
+                new OnDateChangedListener() {
 
-                @Override
-                public void onDateChanged(DatePicker view, int year,
-                        int monthOfYear, int dayOfMonth)
-                {
-                    mCallback.onDateChanged(year, monthOfYear, dayOfMonth);
-                }
-            });
+                    @Override
+                    public void onDateChanged(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+                        mCallback.onDateChanged(year, monthOfYear, dayOfMonth);
+                    }
+                });
 
         if (minDate != null)
             mDatePicker.setMinDate(minDate.getTime());

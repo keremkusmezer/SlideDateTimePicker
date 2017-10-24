@@ -24,15 +24,15 @@ public class CustomTimePicker extends TimePicker
     {
         super(context, attrs);
 
-        Class<?> idClass = null;
-        Class<?> numberPickerClass = null;
-        Field selectionDividerField = null;
-        Field hourField = null;
-        Field minuteField = null;
-        Field amPmField = null;
-        NumberPicker hourNumberPicker = null;
-        NumberPicker minuteNumberPicker = null;
-        NumberPicker amPmNumberPicker = null;
+        Class<?> idClass;
+        Class<?> numberPickerClass;
+        Field selectionDividerField;
+        Field hourField;
+        Field minuteField;
+        Field amPmField;
+        NumberPicker hourNumberPicker;
+        NumberPicker minuteNumberPicker;
+        NumberPicker amPmNumberPicker;
 
         try
         {

@@ -24,15 +24,15 @@ public class CustomDatePicker extends DatePicker
     {
         super(context, attrs);
 
-        Class<?> idClass = null;
-        Class<?> numberPickerClass = null;
-        Field selectionDividerField = null;
-        Field monthField = null;
-        Field dayField = null;
-        Field yearField = null;
-        NumberPicker monthNumberPicker = null;
-        NumberPicker dayNumberPicker = null;
-        NumberPicker yearNumberPicker = null;
+        Class<?> idClass;
+        Class<?> numberPickerClass;
+        Field selectionDividerField;
+        Field monthField;
+        Field dayField;
+        Field yearField;
+        NumberPicker monthNumberPicker;
+        NumberPicker dayNumberPicker;
+        NumberPicker yearNumberPicker;
 
         try
         {

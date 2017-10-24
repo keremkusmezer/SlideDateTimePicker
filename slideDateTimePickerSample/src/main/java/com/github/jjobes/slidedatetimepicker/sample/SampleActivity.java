@@ -23,10 +23,9 @@ import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
 @SuppressLint("SimpleDateFormat")
 public class SampleActivity extends FragmentActivity
 {
-    private SimpleDateFormat mFormatter = new SimpleDateFormat("MMMM dd yyyy hh:mm aa");
-    private Button mButton;
+    private final SimpleDateFormat mFormatter = new SimpleDateFormat("MMMM dd yyyy hh:mm aa");
 
-    private SlideDateTimeListener listener = new SlideDateTimeListener() {
+    private final SlideDateTimeListener listener = new SlideDateTimeListener() {
 
         @Override
         public void onDateTimeSet(Date date)
@@ -51,7 +50,7 @@ public class SampleActivity extends FragmentActivity
 
         setContentView(R.layout.activity_sample);
 
-        mButton = (Button) findViewById(R.id.button);
+        Button mButton = (Button) findViewById(R.id.button);
 
         mButton.setOnClickListener(new OnClickListener() {
 
